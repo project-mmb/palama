@@ -12,3 +12,12 @@ cd <repository-name>
 bun install
 bun run dev
 ```
+
+## Deploy to GitHub Pages
+
+The GitHub Actions workflow builds and publishes the prerendered site. In the
+repository settings, set **Pages > Build and deployment > Source** to **GitHub
+Actions**. Pushes to `main` will deploy automatically.
+
+The Pages build uses the repository path (`/palama/`) for assets and routes;
+local development continues to use `/`.

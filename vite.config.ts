@@ -6,8 +6,16 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH ?? "/",
   plugins: [
-    tanstackStart({ server: { entry: "server" } }),
+    tanstackStart({
+      server: { entry: "server" },
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+        failOnError: true,
+      },
+    }),
     react(),
     tailwindcss(),
     tsconfigPaths({ projects: ["./tsconfig.json"] }),
